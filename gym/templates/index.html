@@ -1,0 +1,281 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="FITFLOW HUB - Gym Management System">
+    <title>FITFLOW HUB | Gym Management System</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="{% static 'assets/css/fitflow-home.css' %}">
+</head>
+
+<body>
+    <!-- NAVBAR -->
+    <header class="site-header">
+        <nav class="navbar container">
+            <a href="/" class="brand">
+                <span class="brand-main">FITFLOW</span><span class="brand-sub"> HUB</span>
+            </a>
+
+            <button class="menu-toggle" type="button" aria-label="Open navigation" onclick="toggleMenu()">
+                <i class="fa-solid fa-bars"></i>
+            </button>
+
+            <div class="nav-links" id="navLinks">
+                <a href="/" class="active">Home</a>
+                <a href="#about">About</a>
+                <a href="#classes">Classes</a>
+                <a href="#plans">Plans</a>
+                <a href="#contact">Contact</a>
+
+                {% if request.user.is_authenticated %}
+                    <a href="/booking_history/">My Bookings</a>
+                    <a href="/user_profile/">Profile</a>
+                    <a href="/user_logout/" class="nav-login">Logout</a>
+                {% else %}
+                    <a href="/user_login/" class="nav-login">
+                        <i class="fa-regular fa-user"></i> Login
+                    </a>
+                    <a href="/registration" class="nav-join">Join Now</a>
+                {% endif %}
+            </div>
+        </nav>
+    </header>
+
+    <!-- HERO -->
+    <main>
+        <section class="hero">
+            <div class="hero-overlay"></div>
+            <div class="container hero-content">
+                <div class="hero-copy">
+                    <span class="eyebrow"><i class="fa-solid fa-bolt"></i> TRAIN SMART. LIVE STRONG.</span>
+                    <h1>BUILD YOUR<br><span>BEST SELF.</span></h1>
+                    <p>
+                        Train with purpose, choose the right membership, book your plan,
+                        and manage your fitness journey from one place.
+                    </p>
+
+                    <div class="hero-actions">
+                        <a href="#plans" class="btn btn-primary">Explore Plans <i class="fa-solid fa-arrow-right"></i></a>
+                        {% if request.user.is_authenticated %}
+                            <a href="/booking_history/" class="btn btn-outline">My Bookings</a>
+                        {% else %}
+                            <a href="/registration" class="btn btn-outline">Become a Member</a>
+                        {% endif %}
+                    </div>
+
+                    <div class="hero-stats">
+                        <div><strong>24/7</strong><span>Gym Access</span></div>
+                        <div><strong>10+</strong><span>Training Programs</span></div>
+                        <div><strong>100%</strong><span>Online Booking</span></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- ABOUT / FEATURES -->
+        <section class="section light-section" id="about">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-tag">WHY FITFLOW?</span>
+                    <h2>Everything you need to <span>stay consistent.</span></h2>
+                    <p>FITFLOW HUB combines gym memberships, bookings and payments into one simple experience.</p>
+                </div>
+
+                <div class="feature-grid">
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                        <h3>Modern Training</h3>
+                        <p>Choose training programs designed for strength, cardio, mobility and overall fitness.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-calendar-check"></i></div>
+                        <h3>Easy Booking</h3>
+                        <p>Select a membership package and manage your booking history from your account.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-shield-halved"></i></div>
+                        <h3>Secure Payments</h3>
+                        <p>Pay for your membership through the integrated Razorpay checkout flow.</p>
+                    </article>
+
+                    <article class="feature-card">
+                        <div class="feature-icon"><i class="fa-solid fa-chart-line"></i></div>
+                        <h3>Manage Progress</h3>
+                        <p>Keep your membership and payment information organized in one place.</p>
+                    </article>
+                </div>
+            </div>
+        </section>
+
+        <!-- CLASSES -->
+        <section class="section dark-section" id="classes">
+            <div class="container">
+                <div class="section-heading dark-heading">
+                    <span class="section-tag">TRAINING</span>
+                    <h2>Find your <span>fitness focus.</span></h2>
+                    <p>Explore the training areas available in FITFLOW HUB.</p>
+                </div>
+
+                <div class="class-grid">
+                    <a href="/yoga_page/" class="class-card">
+                        <div class="class-number">01</div>
+                        <i class="fa-solid fa-person-praying"></i>
+                        <h3>Yoga</h3>
+                        <p>Mobility, balance and flexibility.</p>
+                        <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <a href="/bodyBulding_page/" class="class-card">
+                        <div class="class-number">02</div>
+                        <i class="fa-solid fa-dumbbell"></i>
+                        <h3>Body Building</h3>
+                        <p>Strength and muscle development.</p>
+                        <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <a href="/basicMuscle/" class="class-card">
+                        <div class="class-number">03</div>
+                        <i class="fa-solid fa-fire"></i>
+                        <h3>Muscle Training</h3>
+                        <p>Build a stronger foundation.</p>
+                        <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+
+                    <a href="/cardio_page/" class="class-card">
+                        <div class="class-number">04</div>
+                        <i class="fa-solid fa-heart-pulse"></i>
+                        <h3>Cardio</h3>
+                        <p>Improve endurance and conditioning.</p>
+                        <span>Explore <i class="fa-solid fa-arrow-right"></i></span>
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- PLANS -->
+        <section class="section light-section" id="plans">
+            <div class="container">
+                <div class="section-heading">
+                    <span class="section-tag">MEMBERSHIP</span>
+                    <h2>Choose your <span>perfect plan.</span></h2>
+                    <p>Plans below are loaded directly from your Django package database.</p>
+                </div>
+
+                <div class="pricing-grid">
+                    {% for p in package %}
+                    <article class="pricing-card {% if forloop.counter == 2 %}featured{% endif %}">
+                        {% if forloop.counter == 2 %}
+                            <div class="popular-badge">POPULAR</div>
+                        {% endif %}
+
+                        <div class="pricing-top">
+                            <span class="plan-category">{{ p.category.categoryname }}</span>
+                            <h3>{{ p.titlename }}</h3>
+                            <div class="price">₹{{ p.price }}</div>
+                            <span class="duration">{{ p.packageduration }}</span>
+                        </div>
+
+                        <div class="pricing-body">
+                            <p>{{ p.description|striptags|truncatechars:120 }}</p>
+                            <div class="plan-meta">
+                                <span><i class="fa-solid fa-check"></i> Membership access</span>
+                                <span><i class="fa-solid fa-check"></i> Online booking</span>
+                                <span><i class="fa-solid fa-check"></i> Secure payment</span>
+                            </div>
+
+                            {% if request.user.is_authenticated %}
+                                <a href="/apply-booking/{{ p.id }}/" class="btn btn-primary full-btn">
+                                    Choose Plan <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            {% else %}
+                                <a href="/registration" class="btn btn-primary full-btn">
+                                    Join Now <i class="fa-solid fa-arrow-right"></i>
+                                </a>
+                            {% endif %}
+                        </div>
+                    </article>
+                    {% empty %}
+                    <div class="empty-plans">
+                        <i class="fa-solid fa-box-open"></i>
+                        <h3>No membership plans available yet.</h3>
+                        <p>Add packages from the Django admin panel to display them here.</p>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </section>
+
+        <!-- CTA -->
+        <section class="cta-section">
+            <div class="container cta-inner">
+                <div>
+                    <span class="section-tag">READY TO START?</span>
+                    <h2>Your stronger routine starts today.</h2>
+                    <p>Pick a membership plan and become part of FITFLOW HUB.</p>
+                </div>
+                <a href="#plans" class="btn btn-light">View Membership Plans</a>
+            </div>
+        </section>
+
+        <!-- CONTACT -->
+        <section class="section light-section contact-section" id="contact">
+            <div class="container contact-grid">
+                <div>
+                    <span class="section-tag">CONTACT</span>
+                    <h2>Let's get you <span>moving.</span></h2>
+                    <p>Have a question about membership or training? Reach out to the gym team.</p>
+                </div>
+                <div class="contact-cards">
+                    <div><i class="fa-solid fa-phone"></i><span>Call us<br><strong>+91 00000 00000</strong></span></div>
+                    <div><i class="fa-solid fa-envelope"></i><span>Email<br><strong>fitflowhub@example.com</strong></span></div>
+                    <div><i class="fa-solid fa-location-dot"></i><span>Location<br><strong>Your Gym Location</strong></span></div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container footer-inner">
+            <div>
+                <a href="/" class="brand footer-brand"><span class="brand-main">FITFLOW</span><span class="brand-sub"> HUB</span></a>
+                <p>Smart gym management for a stronger lifestyle.</p>
+            </div>
+
+            <div class="footer-links">
+                <a href="#about">About</a>
+                <a href="#classes">Classes</a>
+                <a href="#plans">Plans</a>
+                <a href="#contact">Contact</a>
+                <a href="{% url 'admin_login' %}">
+                    Admin Portal
+                </a> 
+            </div>
+
+            <div class="copyright">
+                © <script>document.write(new Date().getFullYear());</script> FITFLOW HUB. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        function toggleMenu() {
+            document.getElementById("navLinks").classList.toggle("show");
+        }
+
+        document.querySelectorAll("#navLinks a").forEach(function(link) {
+            link.addEventListener("click", function() {
+                document.getElementById("navLinks").classList.remove("show");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Muscle Power</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+
+<style>
+    
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Arial', sans-serif;
+}
+
+body {
+    background-color: #f4f4f4;
+    color: #333;
+}
+
+header {
+    background-color: #292b2c;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
+}
+
+header h1 {
+    font-size: 3rem;
+    letter-spacing: 1px;
+    font-weight: bold;
+}
+
+header p {
+    font-size: 1.2rem;
+    margin-top: 10px;
+}
+
+.muscles-section {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    padding: 40px 20px;
+}
+
+.muscle-card {
+    background-color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    width: 250px;
+    margin: 20px;
+    text-align: center;
+    padding: 20px;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+.muscle-card:hover {
+    transform: translateY(-10px);
+    box-shadow: 0 8px 12px rgba(0, 0, 0, 0.2);
+}
+
+.muscle-image img {
+    width: 100%;
+    height: 200px;
+    border-radius: 10px;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+
+}
+
+.muscle-image img:hover {
+    transform: scale(1.05);
+}
+
+/* .muscle-card {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        img {
+            width: 100%;
+            height: 300px;
+
+        } */
+
+
+.muscle-card h3 {
+    font-size: 1.6rem;
+    margin-top: 15px;
+    color: #292b2c;
+    font-weight: bold;
+}
+
+.muscle-card p {
+    font-size: 1rem;
+    color: #777;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #292b2c;
+    color: white;
+    font-size: 0.9rem;
+    margin-top: 40px;
+}
+</style>
+
+</head>
+<body>
+    <header>
+        <h1>Muscle Power</h1>
+        <p>Empower Your Strength!</p>
+    </header>
+
+    <section class="muscles-section">
+        <div class="muscle-card">
+            <div class="muscle-image">
+                <img src="{% static 'assets/images/biceps.jpg' %}" alt="Biceps">
+            </div>
+            <h3>Biceps</h3>
+            <p>Strength and power are in your arms. Grow those biceps and feel the difference!</p>
+        </div>
+        <div class="muscle-card">
+            <div class="muscle-image">
+                <img src="{% static 'assets/images/chest.jpg' %}" alt="Chest">
+            </div>
+            <h3>Chest</h3>
+            <p>The chest is a major muscle group that defines upper body strength. Build it with purpose.</p>
+        </div>
+        <div class="muscle-card">
+            <div class="muscle-image">
+                <img src="{% static 'assets/images/legs.jpg' %}" alt="Legs">
+            </div>
+            <h3>Legs</h3>
+            <p>Strong legs are the foundation of a well-rounded physique. Don't skip leg day!</p>
+        </div>
+        <div class="muscle-card">
+            <div class="muscle-image">
+                <img src="{% static 'assets/images/abs.jpg' %}" alt="Abs">
+            </div>
+            <h3>Abs</h3>
+            <p>A strong core is key to stability and overall body strength. Sculpt those abs!</p>
+        </div>
+    </section>
+
+    <footer>
+        <p>&copy; 2025 Muscle Power. All rights reserved.</p>
+    </footer>
+</body>
+</html>

@@ -1,0 +1,687 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta
+        name="viewport"
+        content="width=device-width, initial-scale=1.0"
+    >
+
+    <title>
+        Admin Dashboard | FITFLOW HUB
+    </title>
+
+
+    <link
+        rel="preconnect"
+        href="https://fonts.googleapis.com"
+    >
+
+    <link
+        rel="preconnect"
+        href="https://fonts.gstatic.com"
+        crossorigin
+    >
+
+
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap"
+        rel="stylesheet"
+    >
+
+
+    <link
+        rel="stylesheet"
+        href="{% static 'assets/css/fitflow-admin.css' %}"
+    >
+
+</head>
+
+
+<body>
+
+
+<div class="admin-layout">
+
+
+    <!-- SIDEBAR -->
+
+    <aside class="sidebar">
+
+
+        <div class="sidebar-brand">
+
+            <div class="brand-title">
+                <span>FITFLOW</span> HUB
+            </div>
+
+            <div class="brand-subtitle">
+                ADMIN PANEL
+            </div>
+
+        </div>
+
+
+        <nav class="sidebar-nav">
+
+
+            <a
+                href="{% url 'admin_home' %}"
+                class="nav-item active"
+            >
+                <span>📊</span>
+                Dashboard
+            </a>
+
+
+            <a
+                href="/reg_user/"
+                class="nav-item"
+            >
+                <span>👥</span>
+                Registered Users
+            </a>
+
+
+            <a
+                href="/new_booking/"
+                class="nav-item"
+            >
+                <span>📋</span>
+                Bookings
+            </a>
+
+
+            <a
+                href="/manageCategory/"
+                class="nav-item"
+            >
+                <span>🏷️</span>
+                Categories
+            </a>
+
+
+            <a
+                href="/managePackageType/"
+                class="nav-item"
+            >
+                <span>📦</span>
+                Package Types
+            </a>
+
+
+            <a
+                href="/managePackage/"
+                class="nav-item"
+            >
+                <span>💪</span>
+                Packages
+            </a>
+
+
+            <a
+                href="/addPackage"
+                class="nav-item"
+            >
+                <span>➕</span>
+                Add Package
+            </a>
+
+
+            <a
+                href="/bookingReport/"
+                class="nav-item"
+            >
+                <span>📈</span>
+                Booking Reports
+            </a>
+
+
+            <a
+                href="/regReport/"
+                class="nav-item"
+            >
+                <span>📊</span>
+                Registration Reports
+            </a>
+
+
+            <a
+                href="/changePassword"
+                class="nav-item"
+            >
+                <span>🔐</span>
+                Change Password
+            </a>
+
+
+        </nav>
+
+
+        <div class="sidebar-bottom">
+
+
+            <a
+                href="/"
+                class="nav-item"
+            >
+                <span>🌐</span>
+                View Website
+            </a>
+
+
+            <a
+                href="/logout/"
+                class="nav-item logout"
+            >
+                <span>🚪</span>
+                Logout
+            </a>
+
+
+        </div>
+
+
+    </aside>
+
+
+
+    <!-- MAIN CONTENT -->
+
+    <main class="main-content">
+
+
+        <!-- TOP BAR -->
+
+        <header class="topbar">
+
+
+            <div>
+
+                <div class="page-label">
+                    ADMIN PANEL
+                </div>
+
+                <h1>
+                    Dashboard
+                </h1>
+
+            </div>
+
+
+            <div class="admin-user">
+
+                <div class="admin-avatar">
+                    {{ request.user.first_name|default:request.user.username|first|upper }}
+                </div>
+
+
+                <div>
+
+                    <strong>
+                        {{ request.user.first_name }}
+                        {{ request.user.last_name }}
+                    </strong>
+
+                    <small>
+                        Administrator
+                    </small>
+
+                </div>
+
+            </div>
+
+
+        </header>
+
+
+
+        <!-- WELCOME -->
+
+        <section class="welcome-card">
+
+            <div>
+
+                <span class="eyebrow">
+                    FITFLOW HUB
+                </span>
+
+                <h2>
+                    Welcome back, Admin 👋
+                </h2>
+
+                <p>
+                    Manage your gym, members, packages and bookings
+                    from one simple dashboard.
+                </p>
+
+            </div>
+
+
+            <a
+                href="/"
+                class="primary-btn"
+            >
+                View Website →
+            </a>
+
+        </section>
+
+
+
+        <!-- STAT CARDS -->
+
+        <section class="stats-grid">
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    🏷️
+                </div>
+
+                <div>
+
+                    <span>
+                        Categories
+                    </span>
+
+                    <strong>
+                        {{ totalcategory }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📦
+                </div>
+
+                <div>
+
+                    <span>
+                        Package Types
+                    </span>
+
+                    <strong>
+                        {{ totalpackagetype }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    💪
+                </div>
+
+                <div>
+
+                    <span>
+                        Packages
+                    </span>
+
+                    <strong>
+                        {{ totalpackage }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="stat-card">
+
+                <div class="stat-icon">
+                    📋
+                </div>
+
+                <div>
+
+                    <span>
+                        Total Bookings
+                    </span>
+
+                    <strong>
+                        {{ totalbooking }}
+                    </strong>
+
+                </div>
+
+            </div>
+
+
+        </section>
+
+
+
+        <!-- BOOKING STATUS -->
+
+        <section class="section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        BOOKING OVERVIEW
+                    </span>
+
+                    <h2>
+                        Booking Status
+                    </h2>
+
+                </div>
+
+
+                <a href="/new_booking/">
+                    View All →
+                </a>
+
+            </div>
+
+
+
+            <div class="status-grid">
+
+
+                <a
+                    href="/new_booking/?action=New"
+                    class="status-card pending"
+                >
+
+                    <span class="status-icon">
+                        ⏳
+                    </span>
+
+                    <div>
+
+                        <span>
+                            Payment Pending
+                        </span>
+
+                        <strong>
+                            {{ New|length }}
+                        </strong>
+
+                    </div>
+
+                </a>
+
+
+
+                <a
+                    href="/new_booking/?action=Partial"
+                    class="status-card partial"
+                >
+
+                    <span class="status-icon">
+                        💳
+                    </span>
+
+                    <div>
+
+                        <span>
+                            Partial Payment
+                        </span>
+
+                        <strong>
+                            {{ Partial|length }}
+                        </strong>
+
+                    </div>
+
+                </a>
+
+
+
+                <a
+                    href="/new_booking/?action=Full"
+                    class="status-card success"
+                >
+
+                    <span class="status-icon">
+                        ✓
+                    </span>
+
+                    <div>
+
+                        <span>
+                            Full Payment
+                        </span>
+
+                        <strong>
+                            {{ Full|length }}
+                        </strong>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- QUICK ACTIONS -->
+
+        <section class="section">
+
+
+            <div class="section-heading">
+
+                <div>
+
+                    <span class="eyebrow">
+                        MANAGEMENT
+                    </span>
+
+                    <h2>
+                        Quick Actions
+                    </h2>
+
+                </div>
+
+            </div>
+
+
+
+            <div class="actions-grid">
+
+
+                <a
+                    href="/reg_user/"
+                    class="action-card"
+                >
+
+                    <span>
+                        👥
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Manage Users
+                        </strong>
+
+                        <small>
+                            View registered members
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+
+                <a
+                    href="/manageCategory/"
+                    class="action-card"
+                >
+
+                    <span>
+                        🏷️
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Categories
+                        </strong>
+
+                        <small>
+                            Add or edit categories
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+
+                <a
+                    href="/managePackageType/"
+                    class="action-card"
+                >
+
+                    <span>
+                        📦
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Package Types
+                        </strong>
+
+                        <small>
+                            Manage package types
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+
+                <a
+                    href="/managePackage/"
+                    class="action-card"
+                >
+
+                    <span>
+                        💪
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Manage Packages
+                        </strong>
+
+                        <small>
+                            View and edit packages
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+
+                <a
+                    href="/addPackage"
+                    class="action-card"
+                >
+
+                    <span>
+                        ➕
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Add Package
+                        </strong>
+
+                        <small>
+                            Create a new membership
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+
+                <a
+                    href="/bookingReport/"
+                    class="action-card"
+                >
+
+                    <span>
+                        📈
+                    </span>
+
+                    <div>
+
+                        <strong>
+                            Booking Reports
+                        </strong>
+
+                        <small>
+                            View booking reports
+                        </small>
+
+                    </div>
+
+                </a>
+
+
+            </div>
+
+        </section>
+
+
+
+        <!-- FOOTER -->
+
+        <footer class="admin-footer">
+
+            <strong>
+                FITFLOW HUB
+            </strong>
+
+            <span>
+                Smart gym management for a stronger lifestyle.
+            </span>
+
+        </footer>
+
+
+    </main>
+
+</div>
+
+
+</body>
+
+</html>

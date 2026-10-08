@@ -1,0 +1,101 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile | FITFLOW HUB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="{% static 'assets/css/fitflow-user.css' %}">
+</head>
+<body>
+<header class="user-header">
+    <div class="user-container nav-wrap">
+        <a href="/" class="brand"><span>FITFLOW</span> HUB</a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/booking_history/">My Bookings</a>
+            <a href="/user_profile/" class="active">Profile</a>
+            <a href="/user_change_password/">Change Password</a>
+            <a href="/user_logout/" class="logout-link">Logout</a>
+        </nav>
+    </div>
+</header>
+
+<section class="page-hero compact">
+    <div class="user-container">
+        <span class="eyebrow">ACCOUNT SETTINGS</span>
+        <h1>My <span>Profile</span></h1>
+        <p>Keep your personal and contact information up to date.</p>
+    </div>
+</section>
+
+<main class="user-container content-space">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert"><i class="fa-solid fa-circle-check"></i>{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="profile-layout">
+        <aside class="profile-card">
+            <div class="avatar">
+                {{ request.user.first_name|first|upper }}
+            </div>
+            <h2>{{ request.user.first_name }} {{ request.user.last_name }}</h2>
+            <p>{{ request.user.email }}</p>
+            <div class="profile-menu">
+                <a href="/user_profile/" class="selected"><i class="fa-regular fa-user"></i> Personal Information</a>
+                <a href="/booking_history/"><i class="fa-solid fa-calendar-check"></i> My Bookings</a>
+                <a href="/user_change_password/"><i class="fa-solid fa-lock"></i> Change Password</a>
+            </div>
+        </aside>
+
+        <section class="form-card">
+            <div class="form-heading">
+                <span class="section-tag">PERSONAL INFORMATION</span>
+                <h2>Edit your profile</h2>
+                <p>Update your details below and save your changes.</p>
+            </div>
+
+            <form method="post">
+                {% csrf_token %}
+                <div class="form-grid">
+                    <label>
+                        First Name
+                        <div class="input-wrap"><i class="fa-regular fa-user"></i><input type="text" name="firstname" value="{{ request.user.first_name }}" required></div>
+                    </label>
+                    <label>
+                        Last Name
+                        <div class="input-wrap"><i class="fa-regular fa-user"></i><input type="text" name="secondname" value="{{ request.user.last_name }}" required></div>
+                    </label>
+                    <label>
+                        Email Address
+                        <div class="input-wrap"><i class="fa-regular fa-envelope"></i><input type="email" name="email" value="{{ request.user.email }}" required></div>
+                    </label>
+                    <label>
+                        Mobile Number
+                        <div class="input-wrap"><i class="fa-solid fa-phone"></i><input type="text" name="mobile" value="{{ data.mobile|default:'' }}" required></div>
+                    </label>
+                    <label class="full">
+                        Address
+                        <div class="input-wrap"><i class="fa-solid fa-location-dot"></i><input type="text" name="address" value="{{ data.address|default:'' }}" required></div>
+                    </label>
+                </div>
+                <div class="form-actions">
+                    <a href="/" class="cancel-btn">Cancel</a>
+                    <button type="submit" class="primary-btn"><i class="fa-solid fa-check"></i> Save Changes</button>
+                </div>
+            </form>
+        </section>
+    </div>
+</main>
+
+<footer class="user-footer">
+    <div class="user-container"><strong>FITFLOW HUB</strong><span>Smart gym management for a stronger lifestyle.</span></div>
+</footer>
+</body>
+</html>

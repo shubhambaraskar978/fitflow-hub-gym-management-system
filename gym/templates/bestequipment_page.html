@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Gym Strength Machines - Build Muscle & Strength</title>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Open+Sans:wght@300;600&display=swap"
+        rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Open Sans', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background: #333;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        header h1 {
+            font-family: 'Montserrat', sans-serif;
+            margin: 0;
+        }
+
+        .main-container {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            gap: 30px;
+            flex-wrap: wrap;
+        }
+
+        .equipment-card {
+            background-color: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 10px;
+            overflow: hidden;
+            width: 30%;
+            text-align: center;
+            transition: transform 0.3s ease;
+        }
+
+        .equipment-card:hover {
+            transform: scale(1.05);
+        }
+
+        .equipment-card img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+
+        .equipment-card h3 {
+            margin: 15px 0;
+            font-size: 1.5em;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .equipment-card p {
+            padding: 0 20px 20px;
+            font-size: 1.1em;
+            color: #555;
+        }
+
+        .button {
+            background-color: #007BFF;
+            color: white;
+            padding: 10px 20px;
+            text-transform: uppercase;
+            border: none;
+            font-size: 1.1em;
+            cursor: pointer;
+            border-radius: 5px;
+            margin-bottom: 20px;
+        }
+
+        .button:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 15px 0;
+            font-size: 1em;
+            position: relative;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .highlight {
+            color: #FF6347;
+            font-weight: bold;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Top Strength Training Machines</h1>
+        <p>Build Power, Strength, and Muscle with the Best Workout Machines!</p>
+    </header>
+
+    <div class="main-container">
+        <!-- Card 1: Leg Press Machine -->
+        <div class="equipment-card">
+            <img src="{% static 'assets/images/legPress.jpg' %}" alt="Leg Press Machine">
+            <h3>Leg Press Machine</h3>
+            <p>The Leg Press Machine targets your quads, hamstrings, and glutes, helping you build lower body strength.
+                It’s a great machine for those looking to increase leg muscle mass.</p>
+            <a href="https://en.wikipedia.org/wiki/Leg_press">
+                <button class="button" href="">Learn More</button>
+            </a>
+        </div>
+
+        <!-- Card 2: Smith Machine -->
+        <div class="equipment-card">
+            <img src="{% static 'assets/images/smithMachine.jpg' %}" alt="Smith Machine">
+            <h3>Smith Machine</h3>
+            <p>The Smith Machine allows for controlled squats, presses, and lifts, providing safety and precision. A
+                must-have for strength training enthusiasts!</p>
+            <a href="https://en.wikipedia.org/wiki/Smith_machine">
+                <button class="button">Learn More</button>
+            </a>
+        </div>
+
+        <!-- Card 3: Cable Machine -->
+        <div class="equipment-card">
+            <img src="{% static 'assets/images/cableMachine.jpg' %}" alt="Cable Machine">
+            <h3>Cable Machine</h3>
+            <p>Perfect for targeting each muscle group with controlled resistance. The cable machine can be used for
+                numerous exercises to build upper and lower body strength.</p>
+            <a href="https://en.wikipedia.org/wiki/Cable_machine">
+                <button class="button">Learn More</button>
+            </a>
+        </div>
+    </div>
+
+    <div class="main-container">
+        <!-- Card 4: Lat Pulldown Machine -->
+        <div class="equipment-card">
+            <img src="{% static 'assets/images/latPullDown.jpg' %}" alt="Lat Pulldown Machine">
+            <h3>Lat Pulldown Machine</h3>
+            <p>Target your back and shoulders with the Lat Pulldown Machine. It’s excellent for building upper body
+                strength and improving posture.</p>
+            <a href="https://en.wikipedia.org/wiki/Pull-down_(exercise)">
+                <button class="button">Learn More</button>
+            </a>
+        </div>
+
+        <!-- Card 5: Chest Press Machine -->
+        <div class="equipment-card">
+            <img src="{% static 'assets/images/chestPress.jpg' %}" alt="Chest Press Machine">
+            <h3>Chest Press Machine</h3>
+            <p>Build upper body strength and chest muscles with the Chest Press Machine. It isolates your chest,
+                shoulders, and triceps for efficient muscle development.</p>
+            <a href="https://en.wikipedia.org/wiki/Bench_press">
+                <button class="button">Learn More</button>
+            </a>
+        </div>
+
+        <!-- Card 6: Leg Curl Machine -->
+        <div class="equipment-card">
+            <img src="{% static 'assets/images/legCurl.jpg' %}" alt="Leg Curl Machine">
+            <h3>Leg Curl Machine</h3>
+            <p>The Leg Curl Machine targets the hamstrings, helping you strengthen and develop the back of your legs. A
+                great addition to your lower body workout routine.</p>
+            <a href="https://en.wikipedia.org/wiki/Leg_curl">
+                <button class="button">Learn More</button>
+            </a>
+        </div>
+    </div>
+
+    <footer>
+        <p>© 2025 Fitness Zone. All rights reserved.</p>
+    </footer>
+
+</body>
+
+</html>

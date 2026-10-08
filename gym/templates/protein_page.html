@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protein Intake Guide</title>
+    <!-- <link rel="stylesheet" href="styles.css"> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            line-height: 1.6;
+            background-color: #f4f4f4;
+            color: #333;
+            padding: 20px;
+        }
+
+        header {
+            text-align: center;
+            background-color: #4CAF50;
+            color: white;
+            padding: 30px 0;
+            margin-bottom: 20px;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+
+        section {
+            margin-bottom: 40px;
+        }
+
+        .intro h2,
+        .protein-sources h2,
+        .protein-intake h2 {
+            font-size: 2rem;
+            color: #4CAF50;
+            margin-bottom: 10px;
+        }
+
+        .intro img {
+            margin-left: 2.5rem;
+            width: 80%;
+        
+            height: 400px;
+            object-fit: contain;
+            border-radius: 2rem;
+
+            /* width: 100%;
+            max-width: 600px;
+            display: block;
+            margin: 20px auto; */
+
+        }
+
+        .intro {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+        }
+
+        
+        .protein-sources .image-container {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+
+        .protein-sources .image-item {
+            text-align: center;
+            margin: 10px;
+        }
+
+        .protein-sources .image-item img {
+            width: 150px;
+            height: 150px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 10px;
+        }
+
+        .protein-sources p {
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .protein-intake p {
+            font-size: 1.2rem;
+            color: #555;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            background-color: #4CAF50;
+            color: white;
+            margin-top: 40px;
+        }
+
+        footer p {
+            font-size: 1rem;
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <h1>Protein Intake Guide</h1>
+        <p>Understand how much protein you need and how to get it!</p>
+    </header>
+
+    <section class="intro">
+        <div class="left">
+            <h2>Why Protein is Important</h2>
+            <p>Protein is essential for muscle repair, immune function, and overall body health. Learn how to make sure
+                you
+                are getting enough.
+                Protein is an essential macronutrient that plays a vital role in nearly every cell and function in the
+                body. It is the building block of muscles, tissues, and organs, helping with growth, repair, and
+                maintenance.<br><br> Consuming enough protein is particularly important for muscle recovery after
+                exercise, as
+                it helps to rebuild and strengthen muscle fibers. Protein also supports a healthy immune system,
+                promotes proper enzyme and hormone production, and assists in the transportation of nutrients throughout
+                the body. <br><br> Additionally, it plays a key role in maintaining healthy skin, hair, and nails
+                Without
+                adequate protein intake, the body may experience fatigue, muscle weakness, and an increased risk of
+                illness. Therefore, ensuring you get the right amount of protein is essential for overall health and
+                well-being.</p>
+        </div>
+        <div class="right">
+            <img src="{% static 'assets/images/allp.jpg' %}" alt="Protein Benefits">
+        </div>
+    </section>
+
+    <section class="protein-sources">
+        <h2>Top Sources of Protein</h2>
+        <div class="image-container">
+            <div class="image-item">
+                <img src="{% static 'assets/images/egg.jpg' %}" alt="Eggs">
+                <p>Eggs - A great source of complete protein.</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'assets/images/panner.jpg' %}" alt="Panner">
+                <p>Panner - Packed with high-quality protein.</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'assets/images/oats.jpg' %}" alt="Oats">
+                <p>Oats - Rich in prolamins avenins and protein.</p>
+            </div>
+            <div class="image-item">
+                <img src="{% static 'assets/images/nuts.jpg' %}" alt="Nuts">
+                <p>Nuts - A plant-based protein option.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="protein-intake">
+        <h2>How Much Protein Do You Need?</h2>
+        <p>Generally, the recommended daily intake of protein is 0.8 grams per kilogram of body weight. However,
+            athletes and people with higher activity levels may need more.</p>
+    </section>
+
+    <footer>
+        <p>© 2025 Protein Intake Guide</p>
+    </footer>
+</body>
+
+</html>

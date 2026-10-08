@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cardio Workout Schedule</title>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f9f9f9;
+        }
+
+        .header {
+            background-color: #dc3545;;
+            color: white;
+            padding: 50px 20px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 48px;
+            margin: 0;
+        }
+
+        .header p {
+            font-size: 20px;
+            margin: 10px 0;
+            font-weight: 300;
+        }
+
+        .cardio-schedule {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr); /* 3 columns */
+            gap: 30px;
+            padding: 40px 20px;
+        }
+
+        .cardio-item {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .cardio-item:hover {
+            transform: translateY(-10px);
+        }
+
+        .cardio-item img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 10px;
+        }
+
+        .cardio-item h3 {
+            font-size: 24px;
+            color: #333;
+            margin: 15px 0;
+        }
+
+        .cardio-item p {
+            font-size: 16px;
+            color: #666;
+            margin-bottom: 15px;
+        }
+
+        .cardio-item .schedule {
+            background-color: #f1f1f1;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .cardio-item .schedule h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            color: #dc3545;;
+        }
+
+        .cardio-item .schedule ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .cardio-item .schedule ul li {
+            font-size: 14px;
+            color: #555;
+            margin-bottom: 8px;
+        }
+
+        .footer {
+            background-color: #fff;
+            color: black;
+            padding: 20px 0;
+            text-align: center;
+            font-size: 14px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <h1>Cardio Workout Schedule</h1>
+        <p>Join our classes to stay fit, healthy, and active!</p>
+    </div>
+
+    <div class="cardio-schedule">
+        <div class="cardio-item">
+            <img src="{% static 'assets/images/Treadmill_Running.avif' %}" alt="Treadmill">
+            <h3>Treadmill Running</h3>
+            <p>Boost your cardiovascular health and endurance with a high-intensity treadmill session.</p>
+            <div class="schedule">
+                <h4>Class Timings:</h4>
+                <ul>
+                    <li>Monday: 6:00 AM - 7:00 AM</li>
+                    <li>Wednesday: 7:30 AM - 8:30 AM</li>
+                    <li>Friday: 6:00 PM - 7:00 PM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cardio-item">
+            <img src="{% static 'assets/images/Stationary_Bike.avif' %}" alt="Stationary Bike">
+            <h3>Stationary Bike</h3>
+            <p>Enjoy a low-impact, fat-burning session that focuses on your legs and cardiovascular strength.</p>
+            <div class="schedule">
+                <h4>Class Timings:</h4>
+                <ul>
+                    <li>Tuesday: 6:30 AM - 7:30 AM</li>
+                    <li>Thursday: 5:00 PM - 6:00 PM</li>
+                    <li>Saturday: 9:00 AM - 10:00 AM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cardio-item">
+            <img src="{% static 'assets/images/Rowing_Machine.avif' %}" alt="Rowing Machine">
+            <h3>Rowing Machine</h3>
+            <p>A total body workout that improves endurance and builds strength for both upper and lower body.</p>
+            <div class="schedule">
+                <h4>Class Timings:</h4>
+                <ul>
+                    <li>Monday: 8:00 AM - 9:00 AM</li>
+                    <li>Wednesday: 7:00 PM - 8:00 PM</li>
+                    <li>Friday: 5:30 PM - 6:30 PM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cardio-item">
+            <img src="{% static 'assets/images/Elliptical_Trainer.avif' %}" alt="Elliptical Trainer">
+            <h3>Elliptical Trainer</h3>
+            <p>Perfect for a full-body workout with low-impact on joints while burning a lot of calories.</p>
+            <div class="schedule">
+                <h4>Class Timings:</h4>
+                <ul>
+                    <li>Tuesday: 7:00 AM - 8:00 AM</li>
+                    <li>Thursday: 6:30 PM - 7:30 PM</li>
+                    <li>Sunday: 10:00 AM - 11:00 AM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cardio-item">
+            <img src="{% static 'assets/images/jump_row.webp' %}" alt="Jump Rope">
+            <h3>Jump Rope</h3>
+            <p>Enhance coordination, agility, and cardiovascular fitness with a fast-paced jump rope session.</p>
+            <div class="schedule">
+                <h4>Class Timings:</h4>
+                <ul>
+                    <li>Monday: 7:00 PM - 8:00 PM</li>
+                    <li>Thursday: 6:00 AM - 7:00 AM</li>
+                    <li>Saturday: 11:00 AM - 12:00 PM</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="cardio-item">
+            <img src="{% static 'assets/images/stair_climber.webp' %}" alt="Stair Climber">
+            <h3>Stair Climber</h3>
+            <p>Strengthen your lower body and burn fat efficiently with stair climbing workouts.</p>
+            <div class="schedule">
+                <h4>Class Timings:</h4>
+                <ul>
+                    <li>Tuesday: 8:00 PM - 9:00 PM</li>
+                    <li>Wednesday: 6:00 AM - 7:00 AM</li>
+                    <li>Friday: 4:30 PM - 5:30 PM</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>&copy; 2025 Gym Fitness | All Rights Reserved</p>
+    </div>
+
+</body>
+</html>

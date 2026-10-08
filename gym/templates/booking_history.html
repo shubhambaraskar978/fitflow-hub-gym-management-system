@@ -1,0 +1,100 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Bookings | FITFLOW HUB</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+<link rel="stylesheet" href="{% static 'assets/css/fitflow-user.css' %}">
+</head>
+<body>
+<header class="user-header">
+    <div class="user-container nav-wrap">
+        <a href="/" class="brand"><span>FITFLOW</span> HUB</a>
+        <nav>
+            <a href="/">Home</a>
+            <a href="/booking_history/" class="active">My Bookings</a>
+            <a href="/user_profile/">Profile</a>
+            <a href="/user_change_password/">Change Password</a>
+            <a href="/user_logout/" class="logout-link">Logout</a>
+        </nav>
+    </div>
+</header>
+
+<section class="page-hero">
+    <div class="user-container">
+        <span class="eyebrow">MEMBERS AREA</span>
+        <h1>My <span>Bookings</span></h1>
+        <p>View your membership bookings, payment status and package details.</p>
+    </div>
+</section>
+
+<main class="user-container content-space">
+    {% if messages %}
+        {% for message in messages %}
+            <div class="alert"><i class="fa-solid fa-circle-check"></i>{{ message }}</div>
+        {% endfor %}
+    {% endif %}
+
+    <div class="section-title-row">
+        <div>
+            <span class="section-tag">BOOKING HISTORY</span>
+            <h2>Your memberships</h2>
+        </div>
+        <a href="/#plans" class="outline-btn"><i class="fa-solid fa-plus"></i> Browse Plans</a>
+    </div>
+
+    <div class="booking-list">
+        {% for item in data %}
+        <article class="booking-card">
+            <div class="booking-main">
+                <div class="package-icon"><i class="fa-solid fa-dumbbell"></i></div>
+                <div class="package-info">
+                    <div class="booking-topline">
+                        <span class="category">{{ item.package.category.categoryname }}</span>
+                        <span class="booking-number">#{{ item.bookingnumber }}</span>
+                    </div>
+                    <h3>{{ item.package.titlename }}</h3>
+                    <p>{{ item.package.description|striptags|truncatechars:150 }}</p>
+                    <div class="meta-row">
+                        <span><i class="fa-regular fa-clock"></i>{{ item.package.packageduration }}</span>
+                        <span><i class="fa-solid fa-indian-rupee-sign"></i>{{ item.package.price }}</span>
+                        <span><i class="fa-regular fa-calendar"></i>{{ item.creationdate|date:"d M Y" }}</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="booking-side">
+                {% if item.status == 3 %}
+                    <span class="status status-paid"><i class="fa-solid fa-circle-check"></i> Full Payment</span>
+                {% elif item.status == 2 %}
+                    <span class="status status-partial"><i class="fa-solid fa-clock"></i> Partial Payment</span>
+                {% else %}
+                    <span class="status status-pending"><i class="fa-solid fa-hourglass-half"></i> Payment Pending</span>
+                {% endif %}
+                <a href="/booking_detail/{{ item.id }}/" class="detail-btn">View Details <i class="fa-solid fa-arrow-right"></i></a>
+            </div>
+        </article>
+        {% empty %}
+        <div class="empty-state">
+            <div class="empty-icon"><i class="fa-solid fa-calendar-xmark"></i></div>
+            <h3>No bookings yet</h3>
+            <p>Choose a membership plan and start your fitness journey.</p>
+            <a href="/#plans" class="primary-btn">Explore Plans</a>
+        </div>
+        {% endfor %}
+    </div>
+</main>
+
+<footer class="user-footer">
+    <div class="user-container">
+        <strong>FITFLOW HUB</strong>
+        <span>Smart gym management for a stronger lifestyle.</span>
+    </div>
+</footer>
+</body>
+</html>

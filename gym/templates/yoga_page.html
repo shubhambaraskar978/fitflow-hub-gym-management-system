@@ -1,0 +1,237 @@
+<!-- yoga/templates/yoga/yoga_page.html -->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yoga Classes</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+        }
+
+        header {
+            background-color: #dc3545;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        /* .container {
+            width: 90%;
+            margin: 0 auto;
+        } */
+
+        .intro {
+            text-align: center;
+            margin-top: 30px;
+        }
+
+        .intro h2 {
+            font-size: 36px;
+            color: rgb(116, 26, 26);
+        }
+
+        .intro p {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #555;
+        }
+
+
+
+        /* .class-card div {
+            background-color: white;
+            width: 100%;
+           
+        
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        } */
+
+
+
+
+
+        .class-card .card-content {
+            padding: 20px;
+        }
+
+        .class-card h3 {
+            color: rgb(116, 26, 26);
+            font-size: 24px;
+        }
+
+        .class-card p {
+            font-size: 16px;
+            color: #555;
+        }
+
+        .class-schedule {
+            margin-top: 50px;
+            text-align: center;
+        }
+
+        .class-schedule h2 {
+            font-size: 30px;
+            color: rgb(116, 26, 26);
+        }
+
+        .schedule-list {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-evenly;
+            margin-top: 20px;
+        }
+
+        .schedule-item {
+            background-color: #fff;
+            border-radius: 5px;
+            padding: 15px;
+            box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+            width: 30%;
+            margin: 10px 0;
+        }
+
+        footer {
+            background-color: #fff;
+            color:black;
+            text-align: center;
+            padding: 10px;
+            margin-top: 50px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .class-card div {
+                width: 100%;
+            }
+
+            .schedule-item {
+                width: 100%;
+            }
+        }
+
+        .class-card {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        img {
+            width: 100%;
+            height: 300px;
+
+        }
+
+        .container {
+            width: 500px;
+            height: 500px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin: 2rem;
+            padding: 1rem;
+        }
+
+        .image_container {
+            width: 100%;
+            object-fit: cover;
+            object-position: center;
+
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Welcome to Yoga Classes</h1>
+    </header>
+
+    <div>
+        <section class="intro">
+            <h2>Relax, Rejuvenate, and Strengthen</h2>
+            <p>Join us for classes that enhance flexibility, strength, and mindfulness. Experience the benefits of yoga
+                for your body and mind.</p>
+        </section>
+
+        <section class="class-card">
+            <div class="container">
+                <div class="image_container">
+                    <img src="{% static 'assets/images/morning yoga.webp' %}" alt="Morning Flow Yoga">
+                </div>
+
+                <div class="card-content">
+                    <h3>Morning Flow Yoga</h3>
+                    <p>This class is perfect for those who want to start their day with calmness and energy. Gentle
+                        movements to wake up your body and mind.</p>
+                </div>
+            </div>
+            <div class="container">
+                <div class="image_container">
+                    <img src="{% static 'assets/images/restoration image.jpg' %}" alt="Restorative Yoga">
+                </div>
+                <div class="card-content">
+                    <h3>Restorative Yoga</h3>
+                    <p>Unwind and de-stress in this soothing class. Focus on relaxation and breathing to calm your
+                        nervous system.</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="image_container">
+                    <img src="{% static 'assets/images/power yoga.jpg' %}" alt="Power Yoga">
+                </div>
+                <div class="card-content">
+                    <h3>Power Yoga</h3>
+                    <p>Strengthen your body and mind with dynamic, challenging poses. This class is ideal for building
+                        strength and endurance.</p>
+                </div>
+            </div>
+
+            <div class="container">
+                <div class="image_container">
+                    <img src="{% static 'assets/images/vinyasa yoga.webp' %}" alt="Vinyasa Yoga">
+                </div>
+                <div class="card-content">
+                    <h3>Vinyasa Yoga</h3>
+                    <p>Move from one posture to another in a fluid sequence of poses, synchronizing breath with
+                        movement. Great for improving flexibility and focus.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="class-schedule">
+            <h2>Class Schedule</h2>
+            <div class="schedule-list">
+                <div class="schedule-item">
+                    <h3>Monday - 7:00 AM</h3>
+                    <p>Morning Flow Yoga</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>Wednesday - 6:00 PM</h3>
+                    <p>Evening Restorative Yoga</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>Friday - 8:00 AM</h3>
+                    <p>Power Yoga</p>
+                </div>
+                <div class="schedule-item">
+                    <h3>Saturday - 10:00 AM</h3>
+                    <p>Vinyasa Yoga</p>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <footer>
+        <p>&copy; 2025 Yoga Classes | All Rights Reserved</p>
+    </footer>
+
+</body>
+
+</html>

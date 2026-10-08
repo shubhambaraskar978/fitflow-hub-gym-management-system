@@ -1,0 +1,63 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Admin | FITFLOW HUB{% endblock %}</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Montserrat:wght@700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'assets1/css/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/fitflow-admin.css' %}">
+</head>
+<body>
+<div class="admin-layout">
+    <aside class="sidebar">
+        <div class="sidebar-brand">
+            <div class="brand-title"><span>FITFLOW</span> HUB</div>
+            <div class="brand-subtitle">ADMIN PANEL</div>
+        </div>
+        <nav class="sidebar-nav">
+            <a href="{% url 'admin_home' %}" class="nav-item {% if request.resolver_match.url_name == 'admin_home' %}active{% endif %}"><span>📊</span>Dashboard</a>
+            <a href="{% url 'reg_user' %}" class="nav-item {% if request.resolver_match.url_name == 'reg_user' %}active{% endif %}"><span>👥</span>Registered Users</a>
+            <a href="{% url 'new_booking' %}" class="nav-item {% if request.resolver_match.url_name == 'new_booking' %}active{% endif %}"><span>📋</span>Bookings</a>
+            <a href="{% url 'manageCategory' %}" class="nav-item {% if request.resolver_match.url_name == 'manageCategory' or request.resolver_match.url_name == 'editCategory' %}active{% endif %}"><span>🏷️</span>Categories</a>
+            <a href="{% url 'managePackageType' %}" class="nav-item {% if request.resolver_match.url_name == 'managePackageType' or request.resolver_match.url_name == 'editPackageType' %}active{% endif %}"><span>📦</span>Package Types</a>
+            <a href="{% url 'managePackage' %}" class="nav-item {% if request.resolver_match.url_name == 'managePackage' or request.resolver_match.url_name == 'editPackage' %}active{% endif %}"><span>💪</span>Packages</a>
+            <a href="{% url 'addPackage' %}" class="nav-item {% if request.resolver_match.url_name == 'addPackage' %}active{% endif %}"><span>➕</span>Add Package</a>
+            <a href="{% url 'bookingReport' %}" class="nav-item {% if request.resolver_match.url_name == 'bookingReport' %}active{% endif %}"><span>📈</span>Booking Reports</a>
+            <a href="{% url 'regReport' %}" class="nav-item {% if request.resolver_match.url_name == 'regReport' %}active{% endif %}"><span>📊</span>Registration Reports</a>
+            <a href="{% url 'changePassword' %}" class="nav-item {% if request.resolver_match.url_name == 'changePassword' %}active{% endif %}"><span>🔐</span>Change Password</a>
+        </nav>
+        <div class="sidebar-bottom">
+            <a href="{% url 'index' %}" class="nav-item"><span>🌐</span>View Website</a>
+            <a href="{% url 'logout' %}" class="nav-item logout"><span>🚪</span>Logout</a>
+        </div>
+    </aside>
+    <main class="main-content admin-page-content">
+        <header class="topbar">
+            <div>
+                <div class="page-label">FITFLOW HUB</div>
+                <h1>Admin Workspace</h1>
+            </div>
+            <div class="admin-user">
+                <div class="admin-avatar">{{ request.user.first_name|default:request.user.username|first|upper }}</div>
+                <div>
+                    <strong>{{ request.user.first_name|default:request.user.username }} {{ request.user.last_name }}</strong>
+                    <small>Administrator</small>
+                </div>
+            </div>
+        </header>
+        <div class="admin-content-panel">
+            {% block main %}{% endblock %}
+        </div>
+    </main>
+</div>
+{% for message in messages %}
+<script>alert('{{ message }}');</script>
+{% endfor %}
+<script src="{% static 'assets1/js/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets1/js/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+</html>

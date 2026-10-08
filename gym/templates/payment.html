@@ -1,0 +1,114 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FITFLOW Hub - Payment</title>
+    <link rel="stylesheet" href="{% static 'assets/css/bootstrap.min.css' %}">
+    <style>
+        body {
+            background: #f5f5f5;
+        }
+        .payment-card {
+            max-width: 600px;
+            margin: 70px auto;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="card shadow payment-card">
+        <div class="card-body text-center p-5">
+
+            <h2>FITFLOW <span class="text-danger">Hub</span></h2>
+            <hr>
+
+            <h4>{{ booking.package.titlename }}</h4>
+
+            <p>
+                Duration:
+                <strong>{{ booking.package.packageduration }}</strong>
+            </p>
+
+            <h2>₹{{ booking.package.price }}</h2>
+
+            <p class="text-muted">
+                Booking No: {{ booking.bookingnumber }}
+            </p>
+
+            <button id="pay-btn" class="btn btn-primary btn-lg">
+                Pay Now
+            </button>
+
+        </div>
+    </div>
+</div>
+
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+
+<script>
+const options = {
+    key: "{{ razorpay_key }}",
+    amount: "{{ amount }}",
+    currency: "INR",
+    name: "FITFLOW Hub",
+    description: "{{ booking.package.titlename|escapejs }}",
+    order_id: "{{ razorpay_order_id }}",
+
+    prefill: {
+        name: "{{ request.user.first_name|escapejs }} {{ request.user.last_name|escapejs }}",
+        email: "{{ request.user.email|escapejs }}"
+    },
+
+    theme: {
+        color: "#3399cc"
+    },
+
+    handler: function (response) {
+        fetch("{% url 'payment_success' %}", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/x-www-form-urlencoded;charset=UTF-8",
+                "X-CSRFToken": "{{ csrf_token }}"
+            },
+            body: new URLSearchParams({
+                "razorpay_payment_id": response.razorpay_payment_id,
+                "razorpay_order_id": response.razorpay_order_id,
+                "razorpay_signature": response.razorpay_signature,
+                "booking_id": "{{ booking.id }}"
+            })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.status === "success") {
+                alert("Payment successful! Your booking is now fully paid.");
+                window.location.href = "{% url 'booking_history' %}";
+            } else {
+                alert(data.message || "Payment verification failed.");
+            }
+        })
+        .catch(error => {
+            console.error(error);
+            alert("Unable to verify payment. Please contact the gym administrator.");
+        });
+    },
+
+    modal: {
+        ondismiss: function () {
+            console.log("Razorpay checkout closed.");
+        }
+    }
+};
+
+const rzp = new Razorpay(options);
+
+document.getElementById("pay-btn").onclick = function (e) {
+    e.preventDefault();
+    rzp.open();
+};
+</script>
+
+</body>
+</html>
